@@ -1,31 +1,23 @@
 const { db } = require("../util/db");
 
 const list = () => {
-  return db("tbl_task").select({
-    id: "id",
-    description: "description",
-  });
+  return db("tbl_task").select();
 };
 
 const create = (payload) => {
-  return {};
+  return db("tbl_task").insert(payload, ["id"]);
 };
 
 const get = (id) => {
-  return db("tbl_task")
-    .select({
-      id: "id",
-      description: "description",
-    })
-    .where({ id });
+  return db("tbl_task").select().where({ id });
 };
 
 const update = (id, payload) => {
-  return {};
+  return db("tbl_task").where({ id }).update(payload);
 };
 
 const remove = (id) => {
-  return {};
+  return db("tbl_task").where("id", id).del();
 };
 
 module.exports = {
