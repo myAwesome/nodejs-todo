@@ -4,11 +4,13 @@ const express = require("express"),
   dotenv = require("dotenv");
 dotenv.config();
 app.use(bodyParser.json());
+const { Resource } = require("./util/resource");
+const { resources } = require("./resources");
 
-const { Task } = require("./domain/task");
-new Task(app);
+const initResources = resources.map((resource) => {
+  return new Resource(resource, app);
+});
 
-// server port connection
 app.listen(process.env.PORT, () =>
   console.log("app is running on port " + process.env.PORT)
 );
