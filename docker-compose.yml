@@ -4,8 +4,8 @@ services:
   db:
     image: postgres:13.1
     ports:
-      - 5433:5432
+      - ${DB_PORT}:5432
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_DB=todo
-      - POSTGRES_PASSWORD=pass
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_SCHEME}
+      - POSTGRES_PASSWORD=${DB_PASS}

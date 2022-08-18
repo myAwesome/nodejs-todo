@@ -5,6 +5,7 @@ Simple api example
 -----
 Run 
 - `docker-compose up -d`
+-  exec `init.sql` script
 - `npm install`
 - `node app.js`
 -----

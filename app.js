@@ -1,6 +1,9 @@
 const express = require("express"),
   app = express(),
-  bodyParser = require("body-parser");
+  bodyParser = require("body-parser"),
+  dotenv = require("dotenv");
+
+dotenv.config();
 app.use(bodyParser.json());
 
 const task = require("./service/task");
@@ -26,4 +29,6 @@ app.delete("/task/:id", async (req, res) => {
 });
 
 // server port connection
-app.listen(8082, () => console.log("app is running on port 8082"));
+app.listen(process.env.PORT, () =>
+  console.log("app is running on port " + process.env.PORT)
+);
